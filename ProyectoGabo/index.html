@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Vota por Gabo · Mister Informática</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0c1510;--ink:#f1efe0;--muted:#a9b8a8;--green:#1e8f4e;--green2:#27b963;--yellow:#ffd21f;--blk:#0a0a0a;--blue:#58d3ff;
+color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;color:var(--ink);background:var(--bg) linear-gradient(180deg,#b5531c 0,#5a2a14 180px,var(--bg) 520px) no-repeat;font:17px/1.65 Inter,system-ui,-apple-system,"Segoe UI",Arial,sans-serif}
+main{max-width:640px;margin:0 auto;padding:44px 20px 56px}
+.hero{text-align:center}
+h1{margin:0;font:700 clamp(58px,17vw,104px)/1 Oswald,Impact,"Arial Narrow",sans-serif;display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:4px}
+.el{position:relative;display:inline-block;background:var(--green);color:#fff;border:3px solid #fff;padding:8px 12px 2px;min-width:1.35em}
+.el sup{position:absolute;top:4px;left:6px;font:600 12px/1 Inter,sans-serif}
+.sub{margin:16px 0 0;font-size:20px;font-weight:600;color:var(--yellow)}
+.badge{display:inline-block;margin-top:22px;padding:8px 16px;background:var(--blue);color:#06222b;font:700 18px/1.2 Oswald,Impact,sans-serif;transform:rotate(-3deg);border-radius:4px;box-shadow:0 0 22px rgba(88,211,255,.45)}
+.story{margin-top:34px}
+.story p{margin:0 0 1.15em}
+.story em{color:var(--yellow);font-style:normal;font-weight:600}
+.quote{margin:30px 0;padding:6px 0 6px 18px;border-left:6px solid var(--green2);font:700 clamp(28px,7.5vw,40px)/1.15 Oswald,Impact,sans-serif}
+.quote small{display:block;margin-top:8px;font:400 14px/1.4 Inter,sans-serif;color:var(--muted)}
+h2.t{margin:44px 0 6px;font:700 clamp(30px,8vw,42px)/1.1 Oswald,Impact,sans-serif;color:var(--yellow);text-align:center}
+.lead{text-align:center;color:var(--muted);font-size:15px;margin:0 0 28px}
+/* LÍNEA CRONOLÓGICA */
+.tl{position:relative;margin-left:8px;padding-left:26px;border-left:4px solid var(--green2)}
+.ev{position:relative;margin:0 0 34px}
+.ev::before{content:"";position:absolute;left:-37px;top:6px;width:18px;height:18px;border-radius:50%;background:var(--yellow);border:3px solid var(--blk)}
+.yr{display:inline-block;background:var(--yellow);color:var(--blk);font:700 14px/1 Oswald,Impact,sans-serif;letter-spacing:.04em;padding:5px 9px;border-radius:3px}
+.ev h3{margin:8px 0 4px;font:700 24px/1.15 Oswald,Impact,sans-serif}
+.ev p{margin:0 0 12px;font-size:15.5px;color:#dfe6da}
+/* MARCOS DE FOTO: tamaño fijo 4:3, la foto se ve completa (contain), sin recortes ni deformación */
+.ev figure{margin:0;border:2px solid var(--yellow);background:#14211a;max-width:420px}
+.ph{position:relative;aspect-ratio:4/3;background:#0a120d;display:flex;align-items:center;justify-content:center;text-align:center;padding:10px;color:var(--muted);font-size:13px}
+.ph::before{content:"📷 " attr(data-f)}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#0a120d}
+figcaption{background:var(--yellow);color:var(--blk);font:600 13px/1.3 Inter,sans-serif;padding:6px 10px}
+.tape{height:26px;margin:40px -20px;background:repeating-linear-gradient(-45deg,var(--yellow) 0 22px,var(--blk) 22px 44px);transform:rotate(-1.2deg)}
+.plea{text-align:center}
+.plea h2{margin:0 0 14px;font:700 clamp(30px,8vw,44px)/1.1 Oswald,Impact,sans-serif}
+.plea h2 span{display:block;margin-top:12px;color:var(--yellow);font-size:1.25em}
+.plea p{margin:0 0 28px}
+.donate{appearance:none;border:0;border-radius:6px;background:var(--yellow);color:var(--blk);font:700 clamp(24px,7vw,34px)/1 Oswald,Impact,sans-serif;padding:22px 34px;cursor:pointer;box-shadow:0 7px 0 #a98a00;animation:pulse 2.4s ease-in-out infinite}
+.donate:hover{background:#ffe155}
+.donate:active{transform:translateY(6px);box-shadow:0 1px 0 #a98a00;animation:none}
+.donate:focus-visible,.close:focus-visible{outline:3px solid var(--blue);outline-offset:4px}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.04)}}
+.any{margin:26px 0 0;font:700 20px Oswald,Impact,sans-serif}
+.say{margin:6px 0 0;color:var(--muted);font-size:14px}
+footer{margin-top:56px;padding-top:16px;border-top:1px solid #29402f;text-align:center;font-size:12.5px;color:var(--muted);line-height:1.6}
+dialog{border:0;padding:0;background:transparent;max-width:min(92vw,440px);width:100%;overflow:visible;color:var(--blk);text-align:center}
+dialog::backdrop{background:rgba(2,8,4,.85)}
+.box{background:#fff;border:6px solid var(--yellow);border-radius:6px;padding:14px}
+dialog img{width:100%;height:auto;display:block;image-rendering:pixelated}
+.close{margin-top:14px;border:0;border-radius:6px;background:var(--yellow);color:var(--blk);font:700 18px Oswald,Impact,sans-serif;padding:10px 26px;cursor:pointer}
+@media (prefers-reduced-motion:reduce){.donate{animation:none}}
+</style>
+</head>
+<body>
+<main>
+
+<header class="hero">
+<h1><span class="el"><sup>31</sup>Ga</span><span class="el"><sup>35</sup>Br</span>iel</h1>
+<p class="sub">Candidato a Mister Informática · Leyenda local</p>
+<span class="badge">99.1% PURO · Gabriel Omar Andia Alave</span>
+</header>
+
+<div class="story">
+<p>Mister Informática está a la vuelta de la esquina y el Gabo todavía no tiene ni para el traje. Gabriel Omar Andia Alave, "el Gabo" para los cuates, estudia Informática en la UMSA y compila al primer intento (en su cabeza). Walter White cocinaba con 99.1% de pureza; el Gabo cocina código con el WiFi de la universidad, que es más difícil todavía. Sus programas no tienen bugs, tienen <em>features paceños</em>.</p>
+
+<div class="quote">"Yo soy el que toca la puerta."<small>(la del teleférico, que ya cerró por mantenimiento)</small></div>
+
+<p>Dicen que un día le dijeron "di mi nombre" y respondió: "Gabo, pues". Hank lo siguió seis temporadas y nunca lo pudo atrapar, pero el micro de la Buenos Aires sí. Es orgulloso, bien orgulloso, y no pide favores. Por eso lo hago yo: para que llegue a Mister Informática con traje, con banda y con todo el curso detrás. <em>Better call Gabo.</em></p>
+</div>
+
+<h2 class="t">La historia (casi) verídica de Gabo</h2>
+<p class="lead">Un candidato con experiencia: lleva estando en todos lados desde antes de que existan los lados.</p>
+
+<!-- ============================================================
+  FOTOS: cada evento tiene un marco con su nombre de archivo.
+  1) Crea una carpeta "fotos" junto a este index.html
+  2) Guarda cada foto con EXACTAMENTE el nombre indicado (.jpg)
+     Si tu foto es .png/.webp, cambia la extensión en el src del evento.
+  Los marcos son 4:3 fijos: la foto se ve completa sin recortarse,
+  y si no existe el archivo se muestra el nombre del archivo esperado.
+  ============================================================ -->
+
+<section class="tl" aria-label="Línea cronológica de Gabo">
+
+<article class="ev">
+<span class="yr">1180 a.C.</span>
+<h3>Gabo en Troya</h3>
+<p>Los griegos tenían el caballo; Gabo tenía el plan B. Cuando alguien preguntó "¿y si el regalo trae virus?", él ya estaba instalando el antivirus. Nadie lo escuchó. Troya cayó.</p>
+<figure><div class="ph" data-f="fotos/01-troya.jpg"><img src="fotos/gabo troya.jpeg" alt="Gabo en Troya" loading="lazy" onerror="this.remove()"></div><figcaption>Gabo en Troya</figcaption></figure>
+</article>
+
+<article class="ev">
+<span class="yr">Año 33</span>
+<h3>La Última Cena</h3>
+<p>Doce apóstoles y un invitado extra que llegó "ya mismo nomás". Se sentó al final de la mesa, pidió la cuenta separada y fue el único que sabía dividirla.</p>
+<figure><div class="ph" data-f="fotos/02-ultima-cena.jpg"><img src="fotos/cena.jpeg" alt="Gabo en la última cena" loading="lazy" onerror="this.remove()"></div><figcaption>Gabo en la Última Cena</figcaption></figure>
+</article>
+
+<article class="ev">
+<span class="yr">Siglo VI</span>
+<h3>La profecía tiwanacota</h3>
+<p>Los antiguos tiwanacotas lo dejaron tallado en piedra: "Vendrá uno que llamará, y nadie sabrá si es por tarea o por fiesta". Los arqueólogos confirman que era el Gabo.</p>
+<figure><div class="ph" data-f="fotos/03-tiwanaku.jpg"><img src="fotos/gabo tiwanaco.jpeg" alt="Los tiwanacotas advierten de la llamada de Gabo" loading="lazy" onerror="this.remove()"></div><figcaption>Los tiwanacotas ya lo advertían</figcaption></figure>
+</article>
+
+<article class="ev">
+<span class="yr">Siglo VII</span>
+<h3>La gran excavación</h3>
+<p>Se encontró enterrado bajo capas de tierra un objeto misterioso: el WiFi estable. Gabo lo desenterró, lo miró y dijo "eso ya no existe, hermano".</p>
+<figure><div class="ph" data-f="fotos/04-excavacion.jpg"><img src="fotos/gabo excava.jpeg" alt="Gabo en una excavación" loading="lazy" onerror="this.remove()"></div><figcaption>Gabo, arqueólogo de oficio</figcaption></figure>
+</article>
+
+<article class="ev">
+<span class="yr">1492</span>
+<h3>Gabo descubre América</h3>
+<p>Colón se llevó la fama, pero Gabo fue quien dijo "creo que por ahí hay algo". Quedó fuera de los libros por no tener tiempo de pasar en limpio el informe.</p>
+<figure><div class="ph" data-f="fotos/05-america.jpg"><img src="fotos/gabo americas.jpeg" alt="Gabo descubriendo las Américas" loading="lazy" onerror="this.remove()"></div><figcaption>"Tierra... bueno, algo de señal hay"</figcaption></figure>
+</article>
+
+<article class="ev">
+<span class="yr">1781</span>
+<h3>Tupac Katari y los caballos</h3>
+<p>Gabo estuvo presente como testigo, con cara de "yo no sabía que esto era parte del trabajo". Desde entonces desconfía de todo lo que tenga cuatro patas y mal humor.</p>
+<figure><div class="ph" data-f="fotos/06-tupac-katari.jpg"><img src="fotos/gabo tupac.jpeg" alt="Gabo presenciando a Tupac Katari" loading="lazy" onerror="this.remove()"></div><figcaption>Testigo histórico, sin cobrar</figcaption></figure>
+</article>
+
+<article class="ev">
+<span class="yr">1825</span>
+<h3>Gabo con Simón Bolívar</h3>
+<p>El Libertador necesitaba un segundo par de ojos para firmar la independencia. Gabo leyó el documento completo, aceptó los términos y condiciones, y nació Bolivia. De nada.</p>
+<figure><div class="ph" data-f="fotos/07-bolivar.jpg"><img src="fotos/gabo bolivar.jpeg" alt="Gabo con Simón Bolívar" loading="lazy" onerror="this.remove()"></div><figcaption>Firmando la independencia (sí leyó todo)</figcaption></figure>
+</article>
+
+<article class="ev">
+<span class="yr">1879</span>
+<h3>Guerra del Pacífico: aliado de Perú</h3>
+<p>Gabo se alió con Perú porque "dos son mejores que uno, como en los grupos de trabajo". Lo único que no previó fue que, como siempre, alguien no iba a aportar.</p>
+<figure><div class="ph" data-f="fotos/08-guerra-aliado-peru.jpg"><img src="fotos/gabo guerra aliado peru.jpeg" alt="Gabo, aliado de Perú" loading="lazy" onerror="this.remove()"></div><figcaption>Aliado estratégico de Perú</figcaption></figure>
+</article>
+
+<article class="ev">
+<span class="yr">1932 – 1935</span>
+<h3>Gabo en las trincheras</h3>
+<p>Guerra del Chaco. Calor, sed, cero señal. Aun así, entregó el proyecto a tiempo. "Es que ya estaba acostumbrado", dice.</p>
+<figure><div class="ph" data-f="fotos/09-trincheras.jpg"><img src="fotos/gabo en trincheras.jpeg" alt="Gabo en las trincheras" loading="lazy" onerror="this.remove()"></div><figcaption>Gabo en las trincheras</figcaption></figure>
+</article>
+
+<article class="ev">
+<span class="yr">Navidad (todos los años)</span>
+<h3>El duende de Santa</h3>
+<p>Cada diciembre desaparece sin explicación. Dicen que está en el Polo Norte compilando la lista de niños buenos. Mala noticia: él mismo salió en la lista de los traviesos.</p>
+<figure><div class="ph" data-f="fotos/10-duende-santa.jpg"><img src="fotos/gabo santa.jpeg" alt="Gabo, duende de Santa" loading="lazy" onerror="this.remove()"></div><figcaption>Gabo, duende oficial de Santa</figcaption></figure>
+</article>
+
+<article class="ev">
+<span class="yr">2011</span>
+<h3>Gabo defiende el TIPNIS</h3>
+<p>Marchó, defendió y hasta hizo la presentación de diapositivas del reclamo. Con animaciones. Nadie le pidió animaciones, pero así es él.</p>
+<figure><div class="ph" data-f="fotos/11-tipnis.jpg"><img src="fotos/gabo tipnis.jpeg" alt="Gabo defendiendo el TIPNIS" loading="lazy" onerror="this.remove()"></div><figcaption>Defendiendo el TIPNIS</figcaption></figure>
+</article>
+
+<article class="ev">
+<span class="yr">2019</span>
+<h3>Gabo contra el incendio de la Amazonía</h3>
+<p>Mientras todos compartían historias de "Pray for Amazonía", Gabo llegó con balde y buena actitud. Se sospecha que el fuego se apagó por vergüenza.</p>
+<figure><div class="ph" data-f="fotos/12-incendio-amazonia.jpg"><img src="fotos/amazona.jpeg" alt="Gabo contra el incendio de la Amazonía" loading="lazy" onerror="this.remove()"></div><figcaption>Gabo vs. el incendio</figcaption></figure>
+</article>
+
+<article class="ev">
+<span class="yr">2020</span>
+<h3>La cura del coronavirus</h3>
+<p>Mientras el mundo buscaba la vacuna, Gabo contribuyó con lo esencial: llevar el laboratorio a la hora que no había toque de queda. La ciencia se lo debe.</p>
+<figure><div class="ph" data-f="fotos/13-coronavirus.jpg"><img src="fotos/corona.jpeg" alt="Gabo ayudando a descubrir la cura del coronavirus" loading="lazy" onerror="this.remove()"></div><figcaption>Aportando a la ciencia desde su casa</figcaption></figure>
+</article>
+
+<article class="ev">
+<span class="yr">Eliminatorias 2026</span>
+<h3>Gabo y la Selección</h3>
+<p>Sentado en la tribuna, cruzó los dedos con tanta fuerza que cambió el rumbo de las eliminatorias. Cualquier resultado, dice, fue por él. Si salió bien, mérito suyo; si no, culpa del árbitro.</p>
+<figure><div class="ph" data-f="fotos/14-seleccion.jpg"><img src="fotos/gabo fulbo.jpeg" alt="Gabo ayudando a la selección boliviana" loading="lazy" onerror="this.remove()"></div><figcaption>El jugador número 12 (y el 13)</figcaption></figure>
+</article>
+
+<article class="ev">
+<span class="yr">Partido amistoso</span>
+<h3>Gabo cabecea a Messi</h3>
+<p>Gabo solo se mide con los grandes. Fue una cabeceada limpia, de esas que quedan en la historia o en el parte médico. Messi no dijo nada, pero lo miró distinto desde entonces.</p>
+<figure><div class="ph" data-f="fotos/15-messi.jpg"><img src="fotos/gabo messi.jpeg" alt="Gabo cabeceando a Messi" loading="lazy" onerror="this.remove()"></div><figcaption>Cabezazo a Messi: sin VAR</figcaption></figure>
+</article>
+
+</section>
+
+<div class="tape" role="presentation"></div>
+
+<section class="plea">
+<h2>Un amigo (de los de verdad)
+<span>¡Ayúdalo a llegar a Mister Informática!</span></h2>
+<p>El traje no se paga solo y el Gabo no pide nada. Para apoyar su candidatura (traje, banda y un poco de dignidad), aporta a nuestro fondo.</p>
+<button class="donate" id="open" type="button">Haz click aquí</button>
+<p class="any">¡CUALQUIER MONTO SERÁ APRECIADO!</p>
+<p class="say">Di mi nombre. Mejor aún, di el suyo.</p>
+</section>
+
+<footer>Parodia entre amigos inspirada en savewalterwhite.com (Breaking Bad). No afiliada a AMC, ni a Gus Fring, ni a Los Pollos Hermanos. Todo es broma y todo está consensuado.</footer>
+</main>
+
+<dialog id="qr" aria-label="Código QR para aportar">
+<!-- QR: pega aquí tu <img> original con el base64, o guarda el QR como fotos/qr.png -->
+<div class="box"><img src="fotos/aporte.jpg" alt="Código QR de pago" width="640" height="640"></div>
+<button class="close" id="close" type="button">Cerrar</button>
+</dialog>
+
+<script>
+var d=document.getElementById('qr');
+document.getElementById('open').addEventListener('click',function(){d.showModal()});
+document.getElementById('close').addEventListener('click',function(){d.close()});
+d.addEventListener('click',function(e){if(e.target===d)d.close()});
+</script>
+</body>
+</html>
